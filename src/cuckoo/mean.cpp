@@ -32,9 +32,10 @@ int main(int argc, char **argv) {
         allrounds = true;
         break;
       case 'h':
-        len = strlen(optarg);
-        assert(len <= sizeof(header));
-        memcpy(header, optarg, len);
+        len = strlen(optarg)/2;
+        assert(len == sizeof(header));
+        for (u32 i=0; i<len; i++)
+          sscanf(optarg+2*i, "%2hhx", header+i);
         break;
       case 'x':
         len = strlen(optarg)/2;
