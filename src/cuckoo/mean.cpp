@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
         break;
       case 'h':
         len = strlen(optarg)/2;
+        printf("Header len: %d\n", len);
         assert(len == sizeof(header));
         for (u32 i=0; i<len; i++)
           sscanf(optarg+2*i, "%2hhx", header+i);
