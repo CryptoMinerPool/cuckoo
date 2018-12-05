@@ -26,14 +26,16 @@ int main(int argc, char **argv) {
   int c;
 
   memset(header, 0, sizeof(header));
-  while ((c = getopt (argc, argv, "ah:m:n:r:st:x:")) != -1) {
+  while ((c = getopt (argc, argv, "ah:m:n:r:st:x:d:")) != -1) {
     switch (c) {
       case 'a':
         allrounds = true;
         break;
+      case 'd':
+        printf("Target: %d\n", atoi(optarg));
+        break;
       case 'h':
         len = strlen(optarg)/2;
-        printf("Header len: %d\n", len);
         assert(len <= sizeof(header));
         for (u32 i=0; i<len; i++)
           sscanf(optarg+2*i, "%2hhx", header+i);
